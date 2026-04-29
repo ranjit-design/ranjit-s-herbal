@@ -76,7 +76,7 @@ export default function ProductPage() {
               />
             </div>
             {/* Thumbnails (Simulated) */}
-            <div className="flex gap-4">
+            <div className="flex justify-center md:justify-start gap-4">
               {[1, 2, 3].map((_, idx) => (
                 <button
                   key={idx}
