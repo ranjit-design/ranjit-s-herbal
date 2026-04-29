@@ -2,7 +2,7 @@
 import React from 'react';
 
 const badges = [
-  { icon: '🛡️', text: 'NO-FILLERS' },
+  { icon: '🛡️', text: 'NO-FILTERS' },
   { icon: '🚫', text: 'NO SUGAR' },
   { icon: '✓', text: 'PURITY' },
   { icon: '🌿', text: 'ORGANIC' },
@@ -25,12 +25,12 @@ export default function TrustBadges() {
         </div>
 
         {/* Mobile Sliding View */}
-        <div className="md:hidden relative flex">
-          <div className="flex gap-12 animate-scroll whitespace-nowrap">
+        <div className="md:hidden relative flex overflow-hidden">
+          <div className="animate-scroll">
             {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex gap-12 items-center">
+              <div key={i} className="flex gap-12 items-center pr-12">
                 {badges.map((badge) => (
-                  <div key={`${badge.text}-${i}`} className="flex items-center gap-2 text-gray-700">
+                  <div key={`${badge.text}-${i}`} className="flex items-center gap-2 text-gray-700 shrink-0">
                     <span className="text-lg">{badge.icon}</span>
                     <span className="text-xs font-bold uppercase tracking-widest">{badge.text}</span>
                   </div>
