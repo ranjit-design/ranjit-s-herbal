@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "Organic Coconut Oil",
+    "description": "Cold-pressed virgin coconut oil for hair and skin care. Rich in natural antioxidants.",
+    "price": 18.99,
+    "category": "oils",
+    "image": "/images/oil.png",
+    "rating": 5,
+    "stock": 50,
+    "ingredients": ["100% Organic Coconut Oil"],
+    "benefits": ["Moisturizes skin", "Strengthens hair", "Natural makeup remover"]
+  },
+  {
+    "id": "2",
+    "name": "Herbal Hair Shampoo",
+    "description": "Sulfate-free shampoo with amla, reetha, and shikakai for naturally healthy hair.",
+    "price": 14.99,
+    "category": "shampoos",
+    "image": "/images/shampoo.png",
+    "rating": 4,
+    "stock": 30,
+    "ingredients": ["Amla Extract", "Reetha", "Shikakai", "Aloe Vera"],
+    "benefits": ["Promotes hair growth", "Reduces dandruff", "Adds natural shine"]
+  },
+  {
+    "id": "3",
+    "name": "Neem & Turmeric Soap",
+    "description": "Antibacterial soap with neem and turmeric for clear, glowing skin.",
+    "price": 6.99,
+    "category": "soaps",
+    "image": "/images/soap.png",
+    "rating": 5,
+    "stock": 100,
+    "ingredients": ["Neem Extract", "Turmeric", "Coconut Oil", "Glycerin"],
+    "benefits": ["Fights acne", "Deep cleanses", "Evens skin tone"]
+  },
+  {
+    "id": "4",
+    "name": "Ayurvedic Toothpaste",
+    "description": "Fluoride-free toothpaste with neem, clove, and mint for complete oral care.",
+    "price": 8.99,
+    "category": "toothpaste",
+    "image": "/images/toothpaste.png",
+    "rating": 4,
+    "stock": 75,
+    "ingredients": ["Neem", "Clove Oil", "Mint", "Calcium Carbonate"],
+    "benefits": ["Prevents cavities", "Freshens breath", "Strengthens gums"]
+  },
+  {
+    "id": "5",
+    "name": "Ashwagandha Oil",
+    "description": "Stress-relief massage oil infused with ashwagandha for relaxation and muscle relief.",
+    "price": 24.99,
+    "category": "oils",
+    "image": "/images/oil.png",
+    "rating": 5,
+    "stock": 25,
+    "ingredients": ["Ashwagandha Extract", "Sesame Oil", "Brahmi"],
+    "benefits": ["Reduces stress", "Relieves muscle tension", "Promotes sleep"]
+  },
+  {
+    "id": "6",
+    "name": "Amla Hair Oil",
+    "description": "Traditional Indian hair oil rich in vitamin C for strong, lustrous hair.",
+    "price": 16.99,
+    "category": "oils",
+    "image": "/images/oil.png",
+    "rating": 5,
+    "stock": 40,
+    "ingredients": ["Amla Extract", "Coconut Oil", "Vitamin E"],
+    "benefits": ["Prevents premature graying", "Strengthens roots", "Conditions hair"]
+  }
+]
