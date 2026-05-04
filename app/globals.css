@@ -29,3 +29,21 @@
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+/* Smoothness & GPU Acceleration */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.reveal-bottom,
+.reveal-top,
+.reveal-left,
+.reveal-right,
+[class*="reveal-corner-"],
+.reveal-stagger > * {
+  will-change: transform, opacity, filter;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}

@@ -1,8 +1,10 @@
 'use client'
-import { useEffect } from 'react'
+
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { usePathname } from 'next/navigation'
+import { useGSAP } from '@gsap/react'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -10,26 +12,26 @@ if (typeof window !== 'undefined') {
 
 export default function PageWrapper({ children }) {
   const pathname = usePathname()
+  const mainRef = useRef(null)
 
-  useEffect(() => {
+  useGSAP(() => {
     // Refresh ScrollTrigger on route change
     ScrollTrigger.refresh()
 
     const isMobile = window.innerWidth < 768
-    const xMove = isMobile ? 60 : 150
-    const yMove = isMobile ? 60 : 150
-    const cornerMove = isMobile ? 80 : 200
+    const yMove = isMobile ? 40 : 150
+    const cornerMove = isMobile ? 50 : 200
 
     // Reveal from Bottom
     gsap.utils.toArray('.reveal-bottom').forEach((el) => {
       gsap.fromTo(el, 
-        { y: yMove, opacity: 0, rotation: isMobile ? 1 : 2 },
+        { y: yMove, opacity: 0, rotation: isMobile ? 0 : 2, force3D: true },
         {
           y: 0,
           opacity: 1,
           rotation: 0,
           duration: 3.0,
-          ease: 'power4.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -43,13 +45,13 @@ export default function PageWrapper({ children }) {
     // Reveal from Top
     gsap.utils.toArray('.reveal-top').forEach((el) => {
       gsap.fromTo(el, 
-        { y: -yMove, opacity: 0, rotation: isMobile ? -1 : -2 },
+        { y: -yMove, opacity: 0, rotation: isMobile ? 0 : -2, force3D: true },
         {
           y: 0,
           opacity: 1,
           rotation: 0,
           duration: 3.0,
-          ease: 'power4.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -60,16 +62,17 @@ export default function PageWrapper({ children }) {
       )
     })
 
-    // Reveal from Left
+    // Reveal from Left (Vertical on Mobile)
     gsap.utils.toArray('.reveal-left').forEach((el) => {
       gsap.fromTo(el, 
-        { x: -xMove, opacity: 0, rotation: isMobile ? -2 : -5 },
+        { x: isMobile ? 0 : -150, y: isMobile ? yMove : 0, opacity: 0, rotation: isMobile ? 0 : -5, force3D: true },
         {
           x: 0,
+          y: 0,
           opacity: 1,
           rotation: 0,
           duration: 3.0,
-          ease: 'power4.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -80,16 +83,17 @@ export default function PageWrapper({ children }) {
       )
     })
 
-    // Reveal from Right
+    // Reveal from Right (Vertical on Mobile)
     gsap.utils.toArray('.reveal-right').forEach((el) => {
       gsap.fromTo(el, 
-        { x: xMove, opacity: 0, rotation: isMobile ? 2 : 5 },
+        { x: isMobile ? 0 : 150, y: isMobile ? yMove : 0, opacity: 0, rotation: isMobile ? 0 : 5, force3D: true },
         {
           x: 0,
+          y: 0,
           opacity: 1,
           rotation: 0,
           duration: 3.0,
-          ease: 'power4.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -100,18 +104,25 @@ export default function PageWrapper({ children }) {
       )
     })
 
-    // Reveal from Top-Left Corner (Diagonal)
+    // Reveal from Top-Left Corner (Softened on Mobile)
     gsap.utils.toArray('.reveal-corner-tl').forEach((el) => {
       gsap.fromTo(el, 
-        { x: -cornerMove, y: -cornerMove, opacity: 0, rotation: isMobile ? -5 : -15, filter: 'brightness(3) contrast(1.5)' },
+        { 
+          x: isMobile ? -20 : -cornerMove, 
+          y: isMobile ? -20 : -cornerMove, 
+          opacity: 0, 
+          rotation: isMobile ? 0 : -15, 
+          filter: isMobile ? 'none' : 'brightness(3) contrast(1.5)',
+          force3D: true 
+        },
         {
           x: 0,
           y: 0,
           opacity: 1,
           rotation: 0,
-          filter: 'brightness(1) contrast(1)',
+          filter: isMobile ? 'none' : 'brightness(1) contrast(1)',
           duration: 4.0,
-          ease: 'power3.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -122,18 +133,25 @@ export default function PageWrapper({ children }) {
       )
     })
 
-    // Reveal from Top-Right Corner (Diagonal)
+    // Reveal from Top-Right Corner (Softened on Mobile)
     gsap.utils.toArray('.reveal-corner-tr').forEach((el) => {
       gsap.fromTo(el, 
-        { x: cornerMove, y: -cornerMove, opacity: 0, rotation: isMobile ? 5 : 15, filter: 'brightness(3) contrast(1.5)' },
+        { 
+          x: isMobile ? 20 : cornerMove, 
+          y: isMobile ? -20 : -cornerMove, 
+          opacity: 0, 
+          rotation: isMobile ? 0 : 15, 
+          filter: isMobile ? 'none' : 'brightness(3) contrast(1.5)',
+          force3D: true 
+        },
         {
           x: 0,
           y: 0,
           opacity: 1,
           rotation: 0,
-          filter: 'brightness(1) contrast(1)',
+          filter: isMobile ? 'none' : 'brightness(1) contrast(1)',
           duration: 4.0,
-          ease: 'power3.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -144,18 +162,25 @@ export default function PageWrapper({ children }) {
       )
     })
 
-    // Reveal from Bottom-Left Corner (Diagonal)
+    // Reveal from Bottom-Left Corner (Softened on Mobile)
     gsap.utils.toArray('.reveal-corner-bl').forEach((el) => {
       gsap.fromTo(el, 
-        { x: -cornerMove, y: cornerMove, opacity: 0, rotation: isMobile ? 5 : 15, filter: 'brightness(3) contrast(1.5)' },
+        { 
+          x: isMobile ? -20 : -cornerMove, 
+          y: isMobile ? 20 : cornerMove, 
+          opacity: 0, 
+          rotation: isMobile ? 0 : 15, 
+          filter: isMobile ? 'none' : 'brightness(3) contrast(1.5)',
+          force3D: true 
+        },
         {
           x: 0,
           y: 0,
           opacity: 1,
           rotation: 0,
-          filter: 'brightness(1) contrast(1)',
+          filter: isMobile ? 'none' : 'brightness(1) contrast(1)',
           duration: 4.0,
-          ease: 'power3.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -166,18 +191,25 @@ export default function PageWrapper({ children }) {
       )
     })
 
-    // Reveal from Bottom-Right Corner (Diagonal)
+    // Reveal from Bottom-Right Corner (Softened on Mobile)
     gsap.utils.toArray('.reveal-corner-br').forEach((el) => {
       gsap.fromTo(el, 
-        { x: cornerMove, y: cornerMove, opacity: 0, rotation: isMobile ? -5 : -15, filter: 'brightness(3) contrast(1.5)' },
+        { 
+          x: isMobile ? 20 : cornerMove, 
+          y: isMobile ? 20 : cornerMove, 
+          opacity: 0, 
+          rotation: isMobile ? 0 : -15, 
+          filter: isMobile ? 'none' : 'brightness(3) contrast(1.5)',
+          force3D: true 
+        },
         {
           x: 0,
           y: 0,
           opacity: 1,
           rotation: 0,
-          filter: 'brightness(1) contrast(1)',
+          filter: isMobile ? 'none' : 'brightness(1) contrast(1)',
           duration: 4.0,
-          ease: 'power3.out',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 95%',
@@ -191,8 +223,9 @@ export default function PageWrapper({ children }) {
     // Parallax Effect for Backgrounds
     gsap.utils.toArray('.parallax-bg').forEach((bg) => {
       gsap.to(bg, {
-        yPercent: isMobile ? 15 : 30,
+        yPercent: isMobile ? 10 : 30,
         ease: 'none',
+        force3D: true,
         scrollTrigger: {
           trigger: bg,
           start: 'top top',
@@ -206,14 +239,14 @@ export default function PageWrapper({ children }) {
     gsap.utils.toArray('.reveal-stagger').forEach((container) => {
       const children = container.children
       gsap.fromTo(children, 
-        { y: isMobile ? 40 : 100, opacity: 0, scale: 0.95 },
+        { y: isMobile ? 30 : 100, opacity: 0, scale: 0.98, force3D: true },
         {
           y: 0,
           opacity: 1,
           scale: 1,
           duration: 2.5,
-          stagger: isMobile ? 0.3 : 0.5,
-          ease: 'back.out(1.2)',
+          stagger: isMobile ? 0.2 : 0.5,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: container,
             start: 'top 95%',
@@ -223,11 +256,11 @@ export default function PageWrapper({ children }) {
         }
       )
     })
+  }, { scope: mainRef, dependencies: [pathname] })
 
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
-    }
-  }, [pathname])
-
-  return <>{children}</>
+  return (
+    <div ref={mainRef} className="overflow-x-hidden relative w-full">
+      {children}
+    </div>
+  )
 }
