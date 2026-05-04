@@ -17,7 +17,7 @@ export default function TrustBadges() {
         {/* Desktop View */}
         <div className="hidden md:flex justify-between items-center gap-8">
           {badges.map((badge) => (
-            <div key={badge.text} className="flex items-center gap-2 text-gray-700">
+            <div key={badge.text} className="flex items-center gap-2 text-gray-700 trust-badge-item">
               <span className="text-xl">{badge.icon}</span>
               <span className="text-xs font-bold uppercase tracking-widest">{badge.text}</span>
             </div>

@@ -38,10 +38,10 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen py-8 px-4 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold mb-8 text-center md:text-left">Shop All Products</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center md:text-left reveal-left">Shop All Products</h1>
       
       {/* Filters */}
-      <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
+      <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-8 reveal-right">
         <select className="border rounded-lg px-4 py-2">
           <option>All Categories</option>
           <option>Oils</option>
@@ -59,9 +59,15 @@ export default function ShopPage() {
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {products.map((product, index) => {
+          const revealClasses = ['reveal-left', 'reveal-top', 'reveal-right', 'reveal-bottom'];
+          const revealClass = revealClasses[index % 4];
+          return (
+            <div key={product.id} className={revealClass}>
+              <ProductCard product={product} />
+            </div>
+          );
+        })}
       </div>
     </div>
   )

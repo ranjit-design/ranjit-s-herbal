@@ -63,10 +63,10 @@ export default function AboutCircular() {
       <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-green-200 to-transparent opacity-40 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="text-center z-10 mb-12 px-4 max-w-2xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0A1A0B] mb-4 tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0A1A0B] mb-4 tracking-tight reveal-corner-tl">
           The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1F4A22] to-green-600">Herbal Shop</span> Difference
         </h1>
-        <p className="text-gray-600 text-lg font-medium leading-relaxed">
+        <p className="text-gray-600 text-lg font-medium leading-relaxed reveal-corner-tr">
           Bringing nature's absolute best to your daily wellness routine, backed by tradition and guaranteed by science.
         </p>
       </div>
@@ -75,7 +75,7 @@ export default function AboutCircular() {
       <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-[1300px] mx-auto transition-all duration-700 px-4 z-20">
 
         {/* Circular Layout */}
-        <div className={`mb-8 relative flex items-center justify-center shrink-0 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+        <div className={`mb-8 relative flex items-center justify-center shrink-0 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] reveal-stagger
           w-[300px] h-[300px] md:w-[500px] md:h-[500px] ${selectedPoint ? 'md:w-[450px] md:h-[450px]' : ''}`}
         >
 
@@ -88,7 +88,7 @@ export default function AboutCircular() {
           <div className="absolute w-[70%] h-[70%] bg-gradient-to-tr from-[#FCF1A6] to-green-100/80 rounded-full blur-2xl z-0 pointer-events-none"></div>
 
           {/* Center Image */}
-          <div className="relative z-20 w-40 h-40 md:w-64 md:h-64 rounded-full bg-white/50 backdrop-blur-sm border-2 border-white/60 shadow-[0_0_40px_rgba(31,74,34,0.1)] flex items-center justify-center p-6 group cursor-pointer transition-transform duration-700 hover:scale-[1.03]">
+          <div className="relative z-20 w-40 h-40 md:w-64 md:h-64 rounded-full bg-white/50 backdrop-blur-sm border-2 border-white/60 shadow-[0_0_40px_rgba(31,74,34,0.1)] flex items-center justify-center p-6 group cursor-pointer transition-transform duration-700 hover:scale-[1.03] reveal-bottom">
             <div className="absolute inset-0 bg-white/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 backdrop-blur-[2px]"></div>
             <Image
               src="/images/Herbal.png"
@@ -103,11 +103,13 @@ export default function AboutCircular() {
           {mounted && aboutPoints.map((point, index) => {
             const angle = (index / aboutPoints.length) * 360;
             const isSelected = selectedPoint?.id === point.id;
+            const cornerClasses = ['reveal-corner-tl', 'reveal-corner-tr', 'reveal-corner-bl', 'reveal-corner-br'];
+            const cornerClass = cornerClasses[index % 4];
 
             return (
               <div
                 key={point.id}
-                className={`absolute top-1/2 left-1/2 z-30 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isSelected ? 'z-50' : 'z-30 hover:z-40'}`}
+                className={`absolute top-1/2 left-1/2 z-30 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isSelected ? 'z-50' : 'z-30 hover:z-40'} ${cornerClass}`}
                 style={{
                   transform: `translate(-50%, -50%) rotate(${angle - 90}deg) translate(clamp(135px, 32vw, 240px)) rotate(${-(angle - 90)}deg)`
                 }}
@@ -139,7 +141,7 @@ export default function AboutCircular() {
 
         {/* Selected Detail Modal/Card Area */}
         <div
-          className={`transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] overflow-hidden flex items-center
+          className={`transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] overflow-hidden flex items-center reveal-right
             ${selectedPoint 
               ? 'w-full md:w-[500px] lg:w-[600px] opacity-100 translate-y-0 md:translate-x-0 scale-100 mt-10 md:mt-0 md:ml-20 lg:ml-28 max-h-[1000px]' 
               : 'w-full md:w-0 opacity-0 translate-y-12 md:translate-y-0 md:-translate-x-12 scale-95 mt-0 max-h-0 md:max-h-[1000px]'}`}

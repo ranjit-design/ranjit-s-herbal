@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
 import { AuthProvider } from '@/context/AuthContext'
+import PageWrapper from '@/components/PageWrapper'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
@@ -34,7 +35,9 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <CartProvider>
             <Navbar />
-            <main>{children}</main>
+            <PageWrapper>
+              <main>{children}</main>
+            </PageWrapper>
             <Footer />
           </CartProvider>
         </AuthProvider>

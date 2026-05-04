@@ -57,7 +57,7 @@ export default function HerbalSuggestion({ problem, onReset }) {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 reveal-stagger">
         {recommendedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

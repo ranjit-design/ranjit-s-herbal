@@ -64,7 +64,7 @@ export default function ProductPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-24">
 
           {/* Image Gallery */}
-          <div className="space-y-6">
+          <div className="space-y-6 reveal-corner-tl">
             <div className="relative aspect-square bg-[#F9FBEC] rounded-3xl border border-green-50 overflow-hidden shadow-sm flex items-center justify-center p-8 group">
               <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none"></div>
               <Image
@@ -90,7 +90,7 @@ export default function ProductPage() {
           </div>
 
           {/* Product Details */}
-          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left reveal-corner-tr">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 text-xs font-bold uppercase tracking-wider rounded-full mb-6 w-fit">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               In Stock
@@ -117,9 +117,9 @@ export default function ProductPage() {
               {product.desc}
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-6 w-full">
               {/* Quantity */}
-              <div>
+              <div className="flex flex-col items-center md:items-start">
                 <span className="block text-sm font-bold text-gray-900 mb-3">Quantity</span>
                 <div className="inline-flex items-center bg-white border-2 border-gray-100 rounded-full p-1 shadow-sm">
                   <button
@@ -182,11 +182,11 @@ export default function ProductPage() {
 
         {/* Ingredients Section */}
         <section className="mb-24">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 reveal-top">
             <h2 className="text-4xl font-extrabold text-[#0A1A0B] mb-4">Hero Ingredients</h2>
             <p className="text-gray-500 font-medium">Mother Nature's finest elements inside every bottle.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
             {keyIngredients.map((ingredient, idx) => (
               <div key={idx} className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
                 <div className="w-full h-48 bg-[#F9FBEC] rounded-2xl mb-6 relative overflow-hidden">
@@ -201,7 +201,7 @@ export default function ProductPage() {
 
         {/* Reviews Section */}
         <section className="bg-[#F9FBEC] rounded-[32px] p-8 md:p-16">
-          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 border-b border-green-200/50 pb-8 gap-6 text-center md:text-left">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 border-b border-green-200/50 pb-8 gap-6 text-center md:text-left reveal-left">
             <div>
               <h2 className="text-4xl font-extrabold text-[#0A1A0B] mb-4">Customer Reviews</h2>
               <div className="flex flex-col md:flex-row items-center gap-4">
@@ -221,7 +221,7 @@ export default function ProductPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-stagger">
             {reviews.map(review => (
               <div key={review.id} className="bg-white rounded-3xl p-8 shadow-sm border border-gray-50 flex flex-col h-full">
                 <div className="flex text-yellow-400 mb-4">

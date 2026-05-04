@@ -85,7 +85,7 @@ export default function FavoriteProducts() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Section */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-16 fav-header">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
             Our Favorite Products
           </h2>
@@ -111,9 +111,22 @@ export default function FavoriteProducts() {
         </div>
 
         {/* Products Grid */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 md:gap-y-16 transition-opacity duration-300 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
-          {filteredProducts.map((product) => (
-            <Link href={`/product/${product.id}`} key={product.id} className="relative group cursor-pointer pt-12 block">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 md:gap-y-16 transition-opacity duration-300 fav-grid ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+          {filteredProducts.map((product, index) => {
+            const cornerClasses = [
+              'reveal-corner-tl',
+              'reveal-corner-tr',
+              'reveal-corner-bl',
+              'reveal-corner-br'
+            ];
+            const cornerClass = cornerClasses[index % cornerClasses.length];
+
+            return (
+              <Link 
+                href={`/product/${product.id}`} 
+                key={product.id} 
+                className={`relative group cursor-pointer pt-12 block fav-product-card ${cornerClass}`}
+              >
 
               {/* Card Background */}
               <div className="absolute bottom-0 left-0 right-0 top-16 bg-[#F8F9F8] rounded-2xl z-0 transition-colors duration-300 group-hover:bg-[#F2F4F2]"></div>
@@ -149,7 +162,7 @@ export default function FavoriteProducts() {
               </div>
 
             </Link>
-          ))}
+          )})}
         </div>
 
       </div>
