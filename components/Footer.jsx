@@ -112,7 +112,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#F0F4C8]/50">
+        <div className="border-t border-white/10 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#F0F4C8]/50 reveal-top">
           <p>&copy; {new Date().getFullYear()} Herbal Shop. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-[#F2C83B] transition">Privacy Policy</Link>

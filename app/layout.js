@@ -37,8 +37,8 @@ export default function RootLayout({ children }) {
             <Navbar />
             <PageWrapper>
               <main>{children}</main>
+              <Footer />
             </PageWrapper>
-            <Footer />
           </CartProvider>
         </AuthProvider>
       </body>
