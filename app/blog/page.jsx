@@ -25,16 +25,16 @@ export default function BlogPage() {
     <div className="min-h-screen bg-[#FDFDF8]">
       {/* Header Section */}
       <header className="pt-16 pb-12 px-4 text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-[#111827] mb-4 reveal-corner-tl">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-[#111827] mb-4">
           Herbal Wellness Blog
         </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg reveal-corner-tr">
+        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
           Explore expert tips, recipes, and wellness guides to enhance your herbal journey
         </p>
       </header>
 
       {/* Category Filter */}
-      <div className="max-w-7xl mx-auto px-4 mb-12 reveal-top">
+      <div className="max-w-7xl mx-auto px-4 mb-12">
         <div className="flex flex-wrap justify-center gap-3 md:gap-4">
           {categories.map((category) => (
             <button
@@ -57,13 +57,10 @@ export default function BlogPage() {
         {filteredPosts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {filteredPosts.map((post, index) => {
-              const cornerClasses = ['reveal-corner-tl', 'reveal-corner-tr', 'reveal-corner-bl', 'reveal-corner-br'];
-              const cornerClass = cornerClasses[index % 4];
-              
               return (
                 <article
                   key={post.id}
-                  className={`group bg-white rounded-2xl overflow-hidden border border-gray-50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full ${cornerClass}`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-gray-50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
                 >
                 {/* Image Container */}
                 <Link href={`/blog/${post.id}`} className="block relative aspect-video overflow-hidden bg-gray-50">

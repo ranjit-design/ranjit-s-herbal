@@ -14,6 +14,25 @@ export default function PageWrapper({ children }) {
   const pathname = usePathname()
   const mainRef = useRef(null)
 
+  // Force scroll to top on every route change
+  useEffect(() => {
+    // We use a small timeout to ensure the scroll happens after Next.js completes the transition
+    // and the new content is fully rendered.
+    const handleScroll = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant'
+      });
+    };
+    
+    handleScroll();
+    // Also trigger on a tiny delay for cases where content height might change
+    const timeoutId = setTimeout(handleScroll, 10);
+    
+    return () => clearTimeout(timeoutId);
+  }, [pathname]);
+
   useGSAP(() => {
     // Refresh ScrollTrigger on route change
     ScrollTrigger.refresh()
@@ -37,7 +56,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -57,7 +76,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -77,7 +96,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -97,7 +116,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -126,7 +145,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -155,7 +174,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -184,7 +203,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -213,7 +232,7 @@ export default function PageWrapper({ children }) {
             trigger: el,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )
@@ -250,7 +269,7 @@ export default function PageWrapper({ children }) {
             trigger: container,
             start: 'top bottom-=50',
             end: 'bottom top',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none'
           }
         }
       )

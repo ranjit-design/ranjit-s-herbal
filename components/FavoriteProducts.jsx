@@ -111,21 +111,12 @@ export default function FavoriteProducts() {
         </div>
 
         {/* Products Grid */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 md:gap-y-16 transition-opacity duration-300 fav-grid ${isFading ? 'opacity-0' : 'opacity-100'}`}>
-          {filteredProducts.map((product, index) => {
-            const cornerClasses = [
-              'reveal-corner-tl',
-              'reveal-corner-tr',
-              'reveal-corner-bl',
-              'reveal-corner-br'
-            ];
-            const cornerClass = cornerClasses[index % cornerClasses.length];
-
-            return (
+        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-16 transition-opacity duration-300 fav-grid ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+          {filteredProducts.map((product) => (
               <Link 
                 href={`/product/${product.id}`} 
                 key={product.id} 
-                className={`relative group cursor-pointer pt-12 block fav-product-card ${cornerClass}`}
+                className="relative group cursor-pointer pt-12 block fav-product-card"
               >
 
               {/* Card Background */}
@@ -162,7 +153,7 @@ export default function FavoriteProducts() {
               </div>
 
             </Link>
-          )})}
+          ))}
         </div>
 
       </div>

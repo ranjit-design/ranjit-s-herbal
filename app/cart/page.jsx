@@ -31,76 +31,70 @@ export default function CartPage() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             
             {/* Cart Items List */}
-            <div className="space-y-6">
+            <div className="lg:col-span-8 space-y-6">
               <div className="bg-white rounded-[32px] p-8 shadow-xl shadow-green-900/5 border border-gray-100">
                 <h2 className="text-2xl font-bold text-[#1F4A22] mb-6 text-center md:text-left">Cart Items</h2>
-                <div className="space-y-6">
+                <div className="space-y-8">
                   {cart.map((item) => (
-                    <div key={item.id} className="flex flex-col items-center gap-6 pb-8 border-b border-gray-100 last:border-0 last:pb-0">
+                    <div key={item.id} className="flex flex-col sm:flex-row items-center gap-8 pb-8 border-b border-gray-100 last:border-0 last:pb-0 group">
                       
-                      {/* Product Image */}
-                      <div className="relative w-48 h-48 sm:w-56 sm:h-56 shrink-0 group-hover:scale-105 transition-transform duration-500">
+                      {/* Product Image Container */}
+                      <div className="relative w-40 h-40 sm:w-48 sm:h-48 shrink-0 bg-[#F9FBEC] rounded-3xl border border-green-50 overflow-hidden flex items-center justify-center p-4">
                         {item.image ? (
                           <Image 
                             src={item.image} 
                             alt={item.name} 
                             fill 
-                            className="object-contain p-2 drop-shadow-xl"
+                            className="object-contain p-4 drop-shadow-xl group-hover:scale-110 transition-transform duration-500"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gray-100 rounded-2xl" />
+                          <div className="w-full h-full bg-gray-100" />
                         )}
                       </div>
-
-                      {/* Product Details - Centered Below Image */}
-                      <div className="flex flex-col items-center text-center w-full">
-                        <Link href={`/product/${item.id}`} className="text-2xl font-bold text-gray-900 hover:text-[#1F4A22] transition-colors mb-2 line-clamp-2">
-                          {item.name}
-                        </Link>
-                        
-                        <div className="flex items-center gap-3 mb-6">
-                          <p className="text-gray-400 font-medium line-through">Rs. {Number(item.price * 1.2).toFixed(2)}</p>
-                          <p className="text-xl font-extrabold text-[#1F4A22]">Rs. {Number(item.price).toFixed(2)}</p>
-                        </div>
-
-                        {/* Controls & Total */}
-                        <div className="flex flex-col items-center gap-6 w-full max-w-xs">
-                          <div className="flex items-center justify-between w-full">
-                            <span className="text-sm font-bold text-gray-400 uppercase">Quantity</span>
-                            <div className="inline-flex items-center bg-[#F9FBEC] border border-gray-200 rounded-full p-1 shadow-inner">
-                              <button
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                className="w-10 h-10 flex items-center justify-center rounded-full text-gray-600 hover:bg-white hover:shadow-sm transition-all text-xl font-medium"
-                              >
-                                -
-                              </button>
-                              <span className="w-12 text-center font-bold text-gray-900 text-lg">{item.quantity}</span>
-                              <button
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                className="w-10 h-10 flex items-center justify-center rounded-full text-gray-600 hover:bg-white hover:shadow-sm transition-all text-xl font-medium"
-                              >
-                                +
-                              </button>
-                            </div>
+ 
+                      {/* Product Details & Controls */}
+                      <div className="flex-1 flex flex-col sm:flex-row justify-between items-center sm:items-start w-full gap-6">
+                        <div className="flex flex-col items-center sm:items-start text-center sm:text-left flex-1">
+                          <Link href={`/product/${item.id}`} className="text-xl font-extrabold text-[#1F4A22] hover:text-green-700 transition-colors mb-2 line-clamp-1">
+                            {item.name}
+                          </Link>
+                          <div className="flex items-center gap-3 mb-4">
+                            <span className="text-sm font-bold text-gray-400 line-through">Rs. {Number(item.price * 1.2).toFixed(0)}</span>
+                            <span className="text-lg font-black text-[#1F4A22]">Rs. {Number(item.price).toFixed(0)}</span>
                           </div>
-
-                          <div className="flex items-center justify-between w-full border-t border-gray-100 pt-4">
-                            <span className="text-sm font-bold text-gray-400 uppercase">Total</span>
-                            <span className="text-2xl font-black text-[#1F4A22]">
-                              Rs. {(item.price * item.quantity).toFixed(2)}
-                            </span>
-                          </div>
-
+ 
                           <button
                             onClick={() => removeFromCart(item.id)}
-                            className="text-sm text-red-400 hover:text-red-600 font-bold flex items-center gap-1 transition-colors mt-2"
+                            className="text-xs text-red-400 hover:text-red-600 font-bold flex items-center gap-1 transition-colors"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                            Remove Item
+                            Remove
                           </button>
+                        </div>
+ 
+                        <div className="flex flex-col items-center sm:items-end gap-4 min-w-[140px]">
+                          <div className="inline-flex items-center bg-[#F9FBEC] border border-green-100 rounded-full p-1 shadow-inner">
+                            <button
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-600 hover:bg-white hover:shadow-sm transition-all text-lg font-bold"
+                            >
+                              -
+                            </button>
+                            <span className="w-10 text-center font-black text-[#1F4A22]">{item.quantity}</span>
+                            <button
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              className="w-8 h-8 flex items-center justify-center rounded-full text-gray-600 hover:bg-white hover:shadow-sm transition-all text-lg font-bold"
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Item Total</p>
+                            <p className="text-xl font-black text-[#1F4A22]">Rs. {(item.price * item.quantity).toFixed(0)}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -110,7 +104,7 @@ export default function CartPage() {
             </div>
 
             {/* Order Summary Sidebar */}
-            <div>
+            <div className="lg:col-span-4">
               <div className="bg-white rounded-[32px] p-8 shadow-xl shadow-green-900/5 border border-gray-100 sticky top-24">
                 <h2 className="text-2xl font-bold text-[#1F4A22] mb-6 text-center md:text-left">Order Summary</h2>
                 

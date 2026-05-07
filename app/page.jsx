@@ -30,7 +30,7 @@ export default function Home() {
         trigger: '.hero-content',
         start: 'top 90%',
         end: 'bottom 10%',
-        toggleActions: 'play reverse play reverse'
+        toggleActions: 'play none none none'
       }
     })
     heroTl.from('.hero-content > *', {
@@ -55,7 +55,7 @@ export default function Home() {
         trigger: trustRef.current,
         start: 'top 90%',
         end: 'bottom 10%',
-        toggleActions: 'play reverse play reverse'
+        toggleActions: 'play none none none'
       },
       y: 20,
       opacity: 0,
@@ -74,7 +74,7 @@ export default function Home() {
         trigger: benefitsRef.current,
         start: 'top 80%',
         end: 'bottom 20%',
-        toggleActions: 'play reverse play reverse',
+        toggleActions: 'play none none none',
       }
     })
 
@@ -114,7 +114,7 @@ export default function Home() {
         trigger: ingredientsRef.current,
         start: 'top 80%',
         end: 'bottom 20%',
-        toggleActions: 'play reverse play reverse',
+        toggleActions: 'play none none none',
       }
     })
 
@@ -138,50 +138,6 @@ export default function Home() {
       duration: 0.8,
       ease: 'back.out(2)'
     }, '-=0.4')
-
-    // Favorite Products Animation
-    gsap.from('.fav-header', {
-      scrollTrigger: {
-        trigger: '.fav-header',
-        start: 'top 85%',
-        end: 'bottom 15%',
-        toggleActions: 'play reverse play reverse'
-      },
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    })
-
-    // Blog Section Animation
-    const blogTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: blogRef.current,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play reverse play reverse'
-      }
-    })
-    blogTl.from('.blog-header', {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    })
-
-    // Footer Animation
-    gsap.from('footer', {
-      scrollTrigger: {
-        trigger: 'footer',
-        start: 'top 95%',
-        end: 'bottom 5%',
-        toggleActions: 'play reverse play reverse'
-      },
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    })
 
     // Navbar Animation (on load)
     gsap.from('nav', {
@@ -216,7 +172,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 relative z-10 w-full py-24 flex flex-col items-center justify-center text-center">
           {/* Content with High-Visibility Dark Colors */}
           <div className="hero-content max-w-5xl">
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-semibold leading-tight mb-6 text-[#0A1A0B] reveal-corner-tl">
+            <h1 className="text-3xl md:text-6xl lg:text-8xl font-semibold leading-tight mb-6 text-[#0A1A0B] reveal-corner-tl">
               Feel the <span className="font-extrabold tracking-tight text-[#1F4A22] drop-shadow-[0_0_15px_rgba(31,74,34,0.3)]">Natural Power</span>
             </h1>
             <h2 className="text-2xl md:text-5xl font-extrabold text-[#0A1A0B]/90 mb-8 tracking-tight leading-tight reveal-corner-tr">
@@ -451,11 +407,9 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latestPosts.map((post, index) => {
-              const revealClasses = ['reveal-left', 'reveal-top', 'reveal-right'];
-              const revealClass = revealClasses[index % revealClasses.length];
+            {latestPosts.map((post) => {
               return (
-                <Link key={post.id} href={`/blog/${post.id}`} className={`group block ${revealClass}`}>
+                <Link key={post.id} href={`/blog/${post.id}`} className="group block">
                 <article className="bg-white rounded-2xl overflow-hidden border border-gray-50 shadow-sm group-hover:shadow-md transition-all duration-300 flex flex-col h-full">
                   <div className="relative aspect-video overflow-hidden bg-gray-50">
                     <Image

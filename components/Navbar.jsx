@@ -184,7 +184,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Navigation Dropdown */}
-        <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'} border-t border-gray-200/50`}>
+        <div className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[800px] opacity-100 py-6' : 'max-h-0 opacity-0 py-0'} border-t border-gray-200/50`}>
           <div className="flex flex-col gap-2">
             {navLinks.map((link, index) => (
               <Link

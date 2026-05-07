@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
 
           {/* Brand & Newsletter */}
-          <div className="md:col-span-12 lg:col-span-4 flex flex-col gap-6 text-center md:text-left items-center md:items-start reveal-corner-tl">
+          <div className="md:col-span-12 lg:col-span-4 flex flex-col gap-6 text-center md:text-left items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 justify-center md:justify-start">
               <div className="w-10 h-10 bg-[#F2C83B] rounded-full flex items-center justify-center shadow-lg shadow-[#F2C83B]/20">
                 <svg className="w-6 h-6 text-[#1F4A22]" fill="currentColor" viewBox="0 0 20 20">
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="md:col-span-4 lg:col-span-2 lg:col-start-6 text-center md:text-left reveal-corner-tr">
+          <div className="md:col-span-4 lg:col-span-2 lg:col-start-6 text-center md:text-left">
             <h4 className="font-bold mb-6 text-lg text-[#F0F4C8] uppercase">Shop Links</h4>
             <ul className="space-y-3 text-sm">
               <li><Link href="/shop" className="text-[#F0F4C8]/70 hover:text-[#F2C83B] transition block">All Products</Link></li>
@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
 
           {/* Support */}
-          <div className="md:col-span-4 lg:col-span-2 text-center md:text-left reveal-corner-bl">
+          <div className="md:col-span-4 lg:col-span-2 text-center md:text-left">
             <h4 className="font-bold mb-6 text-lg text-[#F0F4C8] uppercase">Support</h4>
             <ul className="space-y-3 text-sm">
               <li><Link href="/contact" className="text-[#F0F4C8]/70 hover:text-[#F2C83B] transition block">Contact Us</Link></li>
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Details */}
-          <div className="md:col-span-4 lg:col-span-3 text-center md:text-left reveal-corner-br">
+          <div className="md:col-span-4 lg:col-span-3 text-center md:text-left">
             <h4 className="font-bold mb-6 text-lg text-[#F0F4C8] uppercase">Get in Touch</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex flex-col items-center text-center gap-3 md:flex-row md:items-start md:text-left">
@@ -112,7 +112,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#F0F4C8]/50 reveal-top">
+        <div className="border-t border-white/10 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#F0F4C8]/50">
           <p>&copy; {new Date().getFullYear()} Herbal Shop. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-[#F2C83B] transition">Privacy Policy</Link>

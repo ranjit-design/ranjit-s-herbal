@@ -146,7 +146,7 @@ export default function AboutCircular() {
               ? 'w-full md:w-[500px] lg:w-[600px] opacity-100 translate-y-0 md:translate-x-0 scale-100 mt-10 md:mt-0 md:ml-20 lg:ml-28 max-h-[1000px]' 
               : 'w-full md:w-0 opacity-0 translate-y-12 md:translate-y-0 md:-translate-x-12 scale-95 mt-0 max-h-0 md:max-h-[1000px]'}`}
         >
-          <div className="w-full min-w-[340px] md:min-w-[500px] lg:min-w-[600px]">
+          <div className="w-full min-w-0 md:min-w-[500px] lg:min-w-[600px]">
             {selectedPoint && (
               <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-green-50 overflow-hidden">
                 {/* Decorative background shape in card */}

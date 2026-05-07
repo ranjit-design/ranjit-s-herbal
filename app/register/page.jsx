@@ -27,7 +27,7 @@ export default function RegisterPage() {
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* Left Side: Welcome Content */}
-        <div className="text-center md:text-left flex flex-col items-center md:items-start space-y-4 reveal-stagger">
+        <div className="text-center md:text-left flex flex-col items-center md:items-start space-y-4">
           <div className="space-y-0">
             <h3 className="script-font text-2xl md:text-3xl text-[#3A6B35] italic">Join the</h3>
             <h1 className="script-font text-6xl md:text-7xl text-[#1F4A22] leading-tight">Herbal Shop</h1>
@@ -48,7 +48,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Right Side: Register Form */}
-        <div className="w-full max-w-md mx-auto reveal-right">
+        <div className="w-full max-w-md mx-auto">
           <div className="mb-10 text-center md:text-left">
             <h2 className="text-3xl font-bold text-[#1F4A22] inline-block border-b-4 border-[#3A6B35] pb-2">
               Create an Account

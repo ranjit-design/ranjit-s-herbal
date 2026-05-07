@@ -14,14 +14,14 @@ export default function ContactSection() {
         <div className="flex flex-col md:flex-row items-stretch">
 
           {/* Left Side: Information & Image */}
-          <div className="w-full md:w-5/12 rounded-t-[2.5rem] md:rounded-l-[2.5rem] md:rounded-tr-none p-10 md:p-14 relative overflow-hidden z-10 flex flex-col justify-center reveal-left">
+          <div className="w-full md:w-5/12 rounded-t-[2.5rem] md:rounded-l-[2.5rem] md:rounded-tr-none p-10 md:p-14 relative overflow-hidden z-10 flex flex-col justify-center">
 
             {/* Background elements for left card */}
             <div className="absolute top-[-10%] left-[-10%] w-64 h-64 opacity-40 blur-[60px] rounded-full pointer-events-none"></div>
 
-            <div className="relative z-10 flex flex-col items-center text-center reveal-stagger">
+            <div className="relative z-10 flex flex-col items-center text-center">
               {/* Image with Float Animation */}
-              <div className="relative w-48 h-48 md:w-60 md:h-60 mb-10 w-full flex justify-center items-center reveal-corner-tl">
+              <div className="relative w-48 h-48 md:w-60 md:h-60 mb-10 w-full flex justify-center items-center">
                 <div className="absolute bottom-4 w-32 h-6 bg-green-900/10 rounded-full blur-md"></div>
                   <Image
                     src="/images/Shampoo.png"
@@ -29,7 +29,7 @@ export default function ContactSection() {
                     width={200}
                     height={250}
                     style={{ width: "auto", height: "auto" }}
-                    className="object-contain drop-shadow-xl animate-float z-10 relative"
+                    className="object-contain drop-shadow-xl z-10 relative"
                   />
               </div>
 
@@ -43,7 +43,7 @@ export default function ContactSection() {
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="w-full md:w-7/12 bg-white p-10 md:p-16 z-20 md:my-8 border border-green-50 relative reveal-right">
+          <div className="w-full md:w-7/12 bg-white p-10 md:p-16 z-20 md:my-8 border border-green-50 relative">
 
             {/* Subtle glow behind form */}
             <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-[#FCF1A6]/10 rounded-bl-full pointer-events-none blur-[40px]"></div>
@@ -93,7 +93,7 @@ export default function ContactSection() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-[#1F4A22] text-white font-extrabold py-4 rounded-xl transition-all duration-300 shadow-xl shadow-green-900/20 hover:shadow-green-900/40 hover:-translate-y-1 mt-4 text-sm uppercase tracking-widest hover:bg-[#153417]"
+                  className="w-full bg-[#1F4A22] text-white font-extrabold py-4 rounded-xl transition-all duration-300 shadow-xl shadow-green-900/20 hover:shadow-green-900/40 mt-4 text-sm uppercase tracking-widest hover:bg-[#153417]"
                 >
                   Send Message
                 </button>
